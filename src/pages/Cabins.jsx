@@ -1,7 +1,6 @@
 import Heading from "../ui/Heading";
 import React from "react";
 import Row from "../ui/Row";
-import { getCabins } from "../services/apiCabins";
 import CabinTable from "../features/cabins/CabinTable";
 import AddCabin from "../features/cabins/AddCabin";
 
