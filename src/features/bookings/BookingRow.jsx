@@ -18,6 +18,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useCheckout } from "../check-in-out/useCheckout";
 import Modal from "../../ui/Modal";
+import { useDeleteBooking } from "./useDeleteBooking";
 
 const Cabin = styled.div`
   font-size: 1.6rem;
@@ -62,6 +63,7 @@ function BookingRow({
 }) {
   const navigate = useNavigate();
   const { checkout, isCheckingOut } = useCheckout();
+  const { deleteBooking, isDeleting } = useDeleteBooking();
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -134,7 +136,13 @@ function BookingRow({
         </Menus.Menu>
 
         <Modal.Window name="delete">
-          <ConfirmDelete resourceName="booking" onConfirm={() => {}} />
+          <ConfirmDelete
+            disabled={isDeleting}
+            resourceName="booking"
+            onConfirm={() => {
+              deleteBooking(bookingId);
+            }}
+          />
         </Modal.Window>
       </Modal>
     </Table.Row>
