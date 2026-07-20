@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { format, isToday } from "date-fns";
 import {
@@ -119,6 +120,8 @@ function BookingDataBox({ booking }) {
     cabins: { name: cabinName },
   } = booking;
 
+  console.log(isPaid);
+
   return (
     <StyledBookingDataBox>
       <Header>
@@ -169,7 +172,7 @@ function BookingDataBox({ booking }) {
 
             {hasBreakfast &&
               ` (${formatCurrency(cabinPrice)} cabin + ${formatCurrency(
-                extrasPrice
+                extrasPrice,
               )} breakfast)`}
           </DataItem>
 
