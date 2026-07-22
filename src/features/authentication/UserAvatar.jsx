@@ -32,7 +32,7 @@ const UserAvatar = () => {
         src={avatar || "../../../public/img/default-user.jpg"}
         alt={`Avatar of ${fullName}`}
       />
-      <span>fullName</span>
+      <span>{fullName}</span>
     </StyledUserAvatar>
   );
 };
