@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import React from "react";
 import Heading from "../../ui/Heading";
 import Row from "../../ui/Row";
 
@@ -36,7 +36,7 @@ const NoActivity = styled.p`
   margin-top: 0.8rem;
 `;
 
-function Today() {
+function TodayActivity() {
   return (
     <StyledToday>
       <Row type="horizontal">
@@ -46,4 +46,4 @@ function Today() {
   );
 }
 
-export default Today;
+export default TodayActivity;

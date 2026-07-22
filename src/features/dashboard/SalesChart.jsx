@@ -12,7 +12,13 @@ import {
   YAxis,
 } from "recharts";
 import { useDarkMode } from "../../context/DarkModeContext";
-import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
+import {
+  eachDayOfInterval,
+  format,
+  isSameDay,
+  parseISO,
+  subDays,
+} from "date-fns";
 
 const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
@@ -81,17 +87,20 @@ const SalesChart = ({ bookings, numDays }) => {
     return {
       label: format(date, "MMM dd"),
       totalSales: bookings
-        .filter((booking) => isSameDay(date, booking.created_at))
+        .filter((booking) => isSameDay(date, parseISO(booking.created_at)))
         .reduce((acc, curr) => acc + curr.totalPrice, 0),
       extrasSales: bookings
-        .filter((booking) => isSameDay(date, booking.created_at))
+        .filter((booking) => isSameDay(date, parseISO(booking.created_at)))
         .reduce((acc, curr) => acc + curr.extrasPrice, 0),
     };
   });
 
   return (
     <StyledSalesChart>
-      <Heading as="h2">Sales</Heading>
+      <Heading as="h2">
+        Sales from {format(allDates.at(0), "MMM dd yyyy")} &mdash;
+        {format(allDates.at(-1), "MMM dd yyyy")}
+      </Heading>
 
       <ResponsiveContainer height={300} width="100%">
         <AreaChart data={data}>
