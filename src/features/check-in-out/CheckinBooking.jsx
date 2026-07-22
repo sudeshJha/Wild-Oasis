@@ -89,7 +89,7 @@ function CheckinBooking() {
       )}
 
       <Box>
-        <CheckBox
+        <Checkbox
           checked={confirmPaid}
           onChange={() => setConfirmPaid((confirm) => !confirm)}
           id="confirm"
@@ -99,7 +99,7 @@ function CheckinBooking() {
           {!addBreakfast
             ? formatCurrency(totalPrice)
             : `${formatCurrency(totalPrice + optionalBreakFastPrice)} (${formatCurrency(totalPrice)} + ${formatCurrency(optionalBreakFastPrice)})`}
-        </CheckBox>
+        </Checkbox>
       </Box>
 
       <ButtonGroup>
